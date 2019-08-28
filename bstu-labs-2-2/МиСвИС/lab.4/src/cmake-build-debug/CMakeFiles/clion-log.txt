@@ -1,0 +1,41 @@
+"D:\Programs\JetBrains\CLion 2018.3.3\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - MinGW Makefiles" S:\Labs\bstu.labs.2.2\МиСвИС\lab.4\src
+-- The C compiler identification is GNU 8.2.0
+-- The CXX compiler identification is GNU 8.2.0
+-- Check for working C compiler: D:/Programs/MinGW/bin/gcc.exe
+-- Check for working C compiler: D:/Programs/MinGW/bin/gcc.exe -- broken
+CMake Error at D:/Programs/JetBrains/CLion 2018.3.3/bin/cmake/win/share/cmake-3.13/Modules/CMakeTestCCompiler.cmake:52 (message):
+  The C compiler
+
+    "D:/Programs/MinGW/bin/gcc.exe"
+
+  is not able to compile a simple test program.
+
+  It fails with the following output:
+
+    Change Dir: S:/Labs/bstu.labs.2.2/РњРёРЎРІР�РЎ/lab.4/src/cmake-build-debug/CMakeFiles/CMakeTmp
+    
+    Run Build Command:"D:/Programs/MinGW/bin/mingw32-make.exe" "cmTC_cbd96/fast"
+    D:/Programs/MinGW/bin/mingw32-make.exe -f CMakeFiles\cmTC_cbd96.dir\build.make CMakeFiles/cmTC_cbd96.dir/build
+    mingw32-make.exe[1]: Entering directory 'S:/Labs/bstu.labs.2.2/в• С€в•¤С‚в•љв•¤/lab.4/src/cmake-build-debug/CMakeFiles/CMakeTmp'
+    Building C object CMakeFiles/cmTC_cbd96.dir/testCCompiler.c.obj
+    D:\Programs\MinGW\bin\gcc.exe    -o CMakeFiles\cmTC_cbd96.dir\testCCompiler.c.obj   -c S:\Labs\bstu.labs.2.2\в•ЁР¬в•Ёв••в•ЁР±в•Ёв–“в•ЁРЁв•ЁР±\lab.4\src\cmake-build-debug\CMakeFiles\CMakeTmp\testCCompiler.c
+    gcc.exe: error: S:\Labs\bstu.labs.2.2\в•ЁР¬в•Ёв••в•ЁР±в•Ёв–“в•ЁРЁв•ЁР±\lab.4\src\cmake-build-debug\CMakeFiles\CMakeTmp\testCCompiler.c: No such file or directory
+    gcc.exe: fatal error: no input files
+    compilation terminated.
+    CMakeFiles\cmTC_cbd96.dir\build.make:64: recipe for target 'CMakeFiles/cmTC_cbd96.dir/testCCompiler.c.obj' failed
+    mingw32-make.exe[1]: *** [CMakeFiles/cmTC_cbd96.dir/testCCompiler.c.obj] Error 1
+    mingw32-make.exe[1]: Leaving directory 'S:/Labs/bstu.labs.2.2/в• С€в•¤С‚в•љв•¤/lab.4/src/cmake-build-debug/CMakeFiles/CMakeTmp'
+    Makefile:120: recipe for target 'cmTC_cbd96/fast' failed
+    mingw32-make.exe: *** [cmTC_cbd96/fast] Error 2
+    
+
+  
+
+  CMake will not be able to correctly generate this project.
+Call Stack (most recent call first):
+  CMakeLists.txt:2 (project)
+
+
+-- Configuring incomplete, errors occurred!
+See also "S:/Labs/bstu.labs.2.2/РњРёРЎРІР�РЎ/lab.4/src/cmake-build-debug/CMakeFiles/CMakeOutput.log".
+See also "S:/Labs/bstu.labs.2.2/РњРёРЎРІР�РЎ/lab.4/src/cmake-build-debug/CMakeFiles/CMakeError.log".
