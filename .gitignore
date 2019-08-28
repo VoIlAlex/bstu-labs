@@ -1,0 +1,52 @@
+## https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
+
+
+
+# Visual Studio
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+*.ncb
+.vs/
+.vscode/
+
+# User
+*.user
+
+# Python
+venv/
+
+# Visual Studio 6 build log
+*.plg
+
+# Visual Studio 6 workspace options file
+*.opt
+
+
+########
+# Labs #
+########
+
+[Mm]aterial/
+*[Mm]aterial*.doc
+*[Mm]aterial*.docx
+
+
+*.doc
+*.docs
+*.docx
+!*report*.doc
+!*report*.docs
+!*report*.docx
+
+.rar
+.zip
+
+
+
+# Some windows stuff
+desktop.ini
