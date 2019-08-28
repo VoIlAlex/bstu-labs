@@ -43,8 +43,10 @@ venv/
 !*report*.docs
 !*report*.docx
 
-.rar
-.zip
+
+
+*.rar
+*.zip
 
 
 
