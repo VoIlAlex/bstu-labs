@@ -1,0 +1,21 @@
+Задание 1-2
+Принцип работы:
+Для начала вводится массив (одномерный или двумерый) чисел. С помощью программы можно прочесть этот массив, отсортировать этот 
+массив, а также прочесть результат сортировки. 
+Описание функций:
+1. void writeToFile(const char* nameOfFile, const char* content, const char* mode) - 
+							в файл записывается данный content в данном режиме(mode = 0 | 1).
+2. void writeMatrixToFile(const char* nameOfFile, int *numOfColumns, int* numOfLines)
+ - 	вводиться матрица чисел в файл.
+3. int ** readMatrixFromFile(const char* nameOfFile, int *numOfColumns, int*numOfLines) -  считывает из файла элементы, создавая одномерный или двумерный массив.							
+4. void outMatrixFromFile(const char* nameOfFile)- 	выводит матрицу из файла.
+5. void sortMatrixFromFile(const char* nameOfFile, int *numOfColumns, int* numOfLines) - 	Сортирует марицу из файла, записывая результат в конец файла,
+							или, если файл уже содержит результат, выводит предупреждение.
+Файл имеет формат:
+1 2 1 2 1
+2 1 2 1 2
+1 2 1 2 1
+r
+1 1 1 2 2
+1 1 2 2 2 
+1 1 1 2 2
