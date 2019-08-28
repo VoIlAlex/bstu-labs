@@ -1,0 +1,3 @@
+The "Abort" button was pressed.
+The "Retry" button was pressed.
+The "Ignore" button was pressed.
