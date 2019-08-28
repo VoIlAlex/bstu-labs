@@ -1,0 +1,57 @@
+-------------------------------------------
+Player (Player):                    2000HP              0XP
+Current Enemy (Orc):                 100HP
+-------------------------------------------
+Player attack Orc (-100HP)
+Orc has been killed by Player
+-------------------------------------------
+Player (Player):                    2000HP             10XP
+Current Enemy (Troll):               500HP
+-------------------------------------------
+Player attack Troll (-200HP)
+Troll attack Player (-60HP)
+-------------------------------------------
+Player (Player):                    1000HP             10XP
+Current Enemy (Troll):               300HP
+-------------------------------------------
+Player attack Troll (-200HP)
+Troll attack Player (-60HP)
+-------------------------------------------
+Player (Player):                     940HP             10XP
+Current Enemy (Troll):               100HP
+-------------------------------------------
+Player attack Troll (-100HP)
+Troll has been killed by Player
+-------------------------------------------
+Player (Player):                     940HP            110XP
+Current Enemy (Dragon):             1000HP
+-------------------------------------------
+Player attack Dragon (-200HP)
+Dragon attack Player (-200HP)
+-------------------------------------------
+Player (Player):                     740HP            110XP
+Current Enemy (Dragon):              800HP
+-------------------------------------------
+Player attack Dragon (-200HP)
+Dragon attack Player (-200HP)
+-------------------------------------------
+Player (Player):                     540HP            110XP
+Current Enemy (Dragon):              600HP
+-------------------------------------------
+Player attack Dragon (-200HP)
+Dragon attack Player (-200HP)
+-------------------------------------------
+Player (Player):                     340HP            110XP
+Current Enemy (Dragon):              400HP
+-------------------------------------------
+Player attack Dragon (-200HP)
+Dragon attack Player (-200HP)
+-------------------------------------------
+Player (Player):                     140HP            110XP
+Current Enemy (Dragon):              200HP
+-------------------------------------------
+Player attack Dragon (-200HP)
+Dragon has been killed by Player
+-------------------------------------------
+Player (Player):                     140HP          10110XP
+-------------------------------------------
