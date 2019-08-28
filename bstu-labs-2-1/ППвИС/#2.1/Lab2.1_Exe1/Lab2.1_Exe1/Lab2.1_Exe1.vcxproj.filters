@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\units">
+      <UniqueIdentifier>{809fc71f-9758-492f-8664-82a018182f86}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\units">
+      <UniqueIdentifier>{f5b31a8d-79ce-4f62-a45a-e3b0e0589f39}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\factions">
+      <UniqueIdentifier>{1d6f5234-8f7c-4915-a718-2b4a2566de96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\factions">
+      <UniqueIdentifier>{7b5fa584-0f03-4671-ad60-79e4005f2e3b}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="pch.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="unit.h">
+      <Filter>Header Files\units</Filter>
+    </ClInclude>
+    <ClInclude Include="troll.h">
+      <Filter>Header Files\units</Filter>
+    </ClInclude>
+    <ClInclude Include="horde.h">
+      <Filter>Header Files\factions</Filter>
+    </ClInclude>
+    <ClInclude Include="faction.h">
+      <Filter>Header Files\factions</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="pch.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Lab2.1_Exe1.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="unit.cpp">
+      <Filter>Source Files\units</Filter>
+    </ClCompile>
+    <ClCompile Include="troll.cpp">
+      <Filter>Source Files\units</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
