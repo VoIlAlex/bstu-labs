@@ -47,7 +47,7 @@ where `<y>` is an academic year, `<s>` is a semester.
 
 ### Discipline branches
 ```
-<short-name>
+discipline/<short-name>
 ```
 where `<short-name>` is a short name of a discipline.
 
