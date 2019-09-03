@@ -29,7 +29,7 @@ void Analysis::setParamsGenerator(ParamsGenerator paramsGenerator)
 Plots results using python.
 */
 
-void Analysis::plot()
+void Analysis::plot(bool show)
 {
 	if (!m_is_executed)
 	{
@@ -74,15 +74,20 @@ void Analysis::plot()
 			info_buffer << ",";
 		info_buffer << m_generatedValues[i];
 	}
-	info_buffer.close();
 
 	// save additional info
 	// for lab report
-	info_buffer << print();
+	info_buffer << std::endl << print();
 
+	// I won't be useful anymore
+	info_buffer.close();
+
+	
 	// call to python script
-	std::string command = "python plot_it.py --path ";
-	system((command + fileName).c_str());
+	std::string command = "python plot_it.py";
+	if (!show)
+		command += " --silent ";
+	system((command + " --path " + fileName).c_str());
 }
 
 /*

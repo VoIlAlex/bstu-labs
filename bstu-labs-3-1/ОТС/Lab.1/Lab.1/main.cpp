@@ -63,7 +63,7 @@ void analyseMixed()
 	mixed.setAnalizedParameterName("Lambda");
 	mixed.execute(1000);
 	std::cout << mixed << std::endl;
-	mixed.plot();
+	mixed.plot(false);
 
 	// mu
 	mixed.setParamsGenerator(
@@ -79,7 +79,7 @@ void analyseMixed()
 	mixed.setAnalizedParameterName("Mu");
 	mixed.execute(1000);
 	std::cout << mixed << std::endl;
-	mixed.plot();
+	mixed.plot(false);
 
 	// M
 	mixed.setParamsGenerator(
@@ -95,7 +95,7 @@ void analyseMixed()
 	mixed.setAnalizedParameterName("M");
 	mixed.execute(1000);
 	std::cout << mixed << std::endl;
-	mixed.plot();
+	mixed.plot(false);
 
 	// Iterations number
 	mixed.setParamsGenerator(
@@ -111,5 +111,5 @@ void analyseMixed()
 	mixed.setAnalizedParameterName("Iterations");
 	mixed.execute(1000);
 	std::cout << mixed << std::endl;
-	mixed.plot();
+	mixed.plot(false);
 }

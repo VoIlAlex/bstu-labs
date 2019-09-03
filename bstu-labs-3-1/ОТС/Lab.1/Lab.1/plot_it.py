@@ -10,6 +10,11 @@ def parse_args():
         '-p', '--path',
         help='file with values to plot'
     )
+    parser.add_argument(
+        '-s', '--silent',
+        help='use it to suppress plot showing',
+        action='store_true'
+    )
     args = parser.parse_args()
     return args
 
@@ -49,4 +54,7 @@ if __name__ == '__main__':
         args.path),
         generator_name + '_' + parameter_name + '.png')
     plt.savefig(path_to_save)
-    plt.show()
+
+    # show if not suppressed
+    if not args.silent:
+        plt.show()

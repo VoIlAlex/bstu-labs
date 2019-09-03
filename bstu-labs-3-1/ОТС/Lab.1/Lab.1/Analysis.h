@@ -53,7 +53,7 @@ public:
 	/*
 		Plots results using python.
 	*/
-	void plot();
+	void plot(bool show = true);
 	/*
 		Calculation of mathematical parameters
 		like mean, std, etc. And makes vector
