@@ -37,7 +37,7 @@ def parse_generated_values(file_path):
 if __name__ == '__main__':
     args = parse_args()
     generator_name, parameter_name, values = parse_generated_values(args.path)
-    # TODO
+
     # generated values
     plt.figure(figsize=(7, 11))
     plt.subplot(2, 1, 1)
@@ -45,6 +45,7 @@ if __name__ == '__main__':
     plt.xlabel(parameter_name)
     plt.ylabel('Value')
     plt.title(generator_name)
+
     # values distribution
     plt.subplot(2, 1, 2)
     plt.hist(values, density=True, rwidth=.8)
