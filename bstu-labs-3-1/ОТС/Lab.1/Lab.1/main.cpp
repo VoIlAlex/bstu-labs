@@ -52,11 +52,11 @@ void analyseMixed()
 		generateRandomNumbers_mixed,
 		[](int i) -> std::vector<double> {
 			return std::vector<double>{
-				double(i), // lambda
-					1.0,	   //mu
-					1000.0,	//M
-					123.0,	 // X<0>
-					100		   // number of iterations
+				double(i), 		// lambda
+					123,	   	//mu
+					1000.0,		//M
+					123.0,	 	// X<0>
+					100		   	// number of iterations
 			};
 		});
 	mixed.setGeneratorName("Mixed");
@@ -69,11 +69,11 @@ void analyseMixed()
 	mixed.setParamsGenerator(
 		[](int i) -> std::vector<double> {
 			return std::vector<double>{
-				1.0,	   // lambda
-					double(i), //mu
-					1000.0,	//M
-					123.0,	 // X<0>
-					100		   // number of iterations
+				133.3,	   		// lambda
+				double(i), 		//mu
+				1000.0,			//M
+				123.0,	 		// X<0>
+				100		   		// number of iterations
 			};
 		});
 	mixed.setAnalizedParameterName("Mu");
@@ -85,8 +85,8 @@ void analyseMixed()
 	mixed.setParamsGenerator(
 		[](int i) -> std::vector<double> {
 			return std::vector<double>{
-				1.0,	   // lambda
-					1.0,	   //mu
+				133.3,	   // lambda
+					123,	   //mu
 					double(i + 1), // M
 					123.0,	 // X<0>
 					100		   // number of iterations
@@ -101,8 +101,8 @@ void analyseMixed()
 	mixed.setParamsGenerator(
 		[](int i) -> std::vector<double> {
 			return std::vector<double>{
-				1.0,	  // lambda
-					1.0,	  //mu
+				133.3,	  // lambda
+					123,	  //mu
 					1000,	 // M
 					123.0,	// X<0>
 					double(i) // number of iterations
