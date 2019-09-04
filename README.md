@@ -1,7 +1,8 @@
 # BSTU. Labs
 
-This repo contains all labs that [voilalex]() passed
-during his student time.
+This repo contains all labs of AI
+discipline at Brest State Technical 
+University.
 
 ## Disciplines
 
