@@ -38,3 +38,13 @@ double generateRandomNumber_uniform_distr(const std::vector<double>& params);
 	@params[3] - iteration
 */
 double generateRandomNumber_normal_distr(const std::vector<double>& params);
+
+
+/*
+	Exponential distribution.
+
+	Parameters:
+	@params[0] - lambda
+	@params[1] - iteration
+*/
+double generateRandomNumber_exp_distr(const std::vector<double>& params);

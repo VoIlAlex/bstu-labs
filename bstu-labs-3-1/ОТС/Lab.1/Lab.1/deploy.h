@@ -12,3 +12,5 @@ void analyseMixed();
 void analyseUniformDistr();
 
 void analyseNormalDistr();
+
+void analyseExponentialDistr();

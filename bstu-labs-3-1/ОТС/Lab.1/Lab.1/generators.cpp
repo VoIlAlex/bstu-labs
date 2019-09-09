@@ -79,3 +79,22 @@ double generateRandomNumber_normal_distr(const std::vector<double>& params)
 	double final_random_num = mean + D * pow(2, 0.5) * (sum_of_random_nums - 3);
 	return final_random_num;
 }
+
+double generateRandomNumber_exp_distr(const std::vector<double>& params)
+{
+	double lambda = params[0];
+	int iterations = params[1];
+
+	// Random number within (0, 1)
+	double R = generateRandomNumber_mixed({
+		12312331, // lambda
+		111, // mu
+		std::numeric_limits<int>::max(), // M
+		13, // x<0>
+		double(iterations) // iterations
+		});
+	R = R / std::numeric_limits<int>::max();
+
+	double final_random_number = -(1 / lambda) * log(1 - R);
+	return final_random_number;
+}

@@ -36,6 +36,7 @@ int main()
 	//analyseMixed();
 	//analyseUniformDistr();
 	//analyseNormalDistr();
+	//analyseExponentialDistr();
 	return 0;
 }
 

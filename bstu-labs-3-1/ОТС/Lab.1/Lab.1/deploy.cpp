@@ -109,3 +109,21 @@ void analyseNormalDistr()
 	normal_distr.plot();
 	std::cin.get();
 }
+
+void analyseExponentialDistr()
+{
+	Analysis exp_distr(
+		generateRandomNumber_exp_distr,
+		[](int i) -> std::vector<double> {
+			return {
+				10, // lambda
+				double(i) // iteration
+			};
+		}
+	);
+	exp_distr.setGeneratorName("Exponential distribution");
+	exp_distr.setAnalizedParameterName("Iterations");
+	exp_distr.execute(1000);
+	exp_distr.plot();
+	std::cin.get();
+}
