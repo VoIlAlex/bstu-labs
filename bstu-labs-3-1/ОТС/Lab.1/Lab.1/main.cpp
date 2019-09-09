@@ -31,12 +31,11 @@
 
 
 
-
-
 int main()
 {
-	analyseUniformDistr();
-
+	//analyseMixed();
+	//analyseUniformDistr();
+	//analyseNormalDistr();
 	return 0;
 }
 

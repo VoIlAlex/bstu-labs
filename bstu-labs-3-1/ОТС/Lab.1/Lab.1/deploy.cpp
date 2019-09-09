@@ -89,3 +89,23 @@ void analyseUniformDistr()
 	uniform_distr.plot();
 	std::cin.get();
 }
+
+void analyseNormalDistr()
+{
+	Analysis normal_distr(
+		generateRandomNumber_normal_distr,
+		[](int i) -> std::vector<double> {
+			return {
+				1000, // mean
+				0.5, // D
+				6, // n
+				double(i) // iteration
+			};
+		}
+	);
+	normal_distr.setGeneratorName("Normal distribution");
+	normal_distr.setAnalizedParameterName("Iterations");
+	normal_distr.execute(1000);
+	normal_distr.plot();
+	std::cin.get();
+}
