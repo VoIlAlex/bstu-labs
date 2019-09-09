@@ -29,7 +29,7 @@ void Analysis::setParamsGenerator(ParamsGenerator paramsGenerator)
 Plots results using python.
 */
 
-void Analysis::plot(bool show)
+void Analysis::plot()
 {
 	if (!m_is_executed)
 	{
@@ -48,9 +48,9 @@ void Analysis::plot(bool show)
 	}
 	std::string fileName = std::filesystem::current_path().string()
 		+ "\\results\\"
-		+ m_generatorName 
-		+ "_" 
-		+ m_analizedParameterName 
+		+ m_generatorName
+		+ "_"
+		+ m_analizedParameterName
 		+ ".txt";
 	info_buffer.open(fileName, std::ios::out | std::ios::trunc);
 	if (!info_buffer)
@@ -74,20 +74,15 @@ void Analysis::plot(bool show)
 			info_buffer << ",";
 		info_buffer << m_generatedValues[i];
 	}
+	info_buffer.close();
 
 	// save additional info
 	// for lab report
-	info_buffer << std::endl << print();
+	info_buffer << print();
 
-	// I won't be useful anymore
-	info_buffer.close();
-
-	
 	// call to python script
-	std::string command = "python plot_it.py";
-	if (!show)
-		command += " --silent ";
-	system((command + " --path " + fileName).c_str());
+	std::string command = "python plot_it.py --path \"";
+	system((command + fileName + "\"").c_str());
 }
 
 /*
@@ -99,7 +94,7 @@ Parameters:
 @size - size of vector to generate
 */
 
-void Analysis::execute(int size)
+void Analysis::execute(int size, bool normalize)
 {
 	// clear buffers
 	m_mean = 0;
@@ -107,6 +102,8 @@ void Analysis::execute(int size)
 	m_generatedValues.clear();
 
 	std::vector<double> params;
+
+	double generatedValue;
 	for (int i = 0; i < size; i++)
 	{
 		// generate parameters of
@@ -117,8 +114,10 @@ void Analysis::execute(int size)
 		// by specified random generator
 		// using previously generated
 		// parameters
+		generatedValue = m_randomGenerator(params);
 		m_generatedValues.push_back(
-			m_randomGenerator(params));
+			generatedValue
+		);
 	}
 
 	// calculation of the mean

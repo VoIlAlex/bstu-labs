@@ -22,20 +22,14 @@
     <ClCompile Include="Analysis.cpp" />
     <ClCompile Include="generators.cpp" />
     <ClCompile Include="main.cpp" />
-<<<<<<< Updated upstream
-=======
     <ClCompile Include="deploy.cpp" />
->>>>>>> Stashed changes
   </ItemGroup>
   <ItemGroup>
     <None Include="plot_it.py" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Analysis.h" />
-<<<<<<< Updated upstream
-=======
     <ClInclude Include="deploy.h" />
->>>>>>> Stashed changes
     <ClInclude Include="generators.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

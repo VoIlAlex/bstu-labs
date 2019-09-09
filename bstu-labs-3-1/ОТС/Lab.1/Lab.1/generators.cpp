@@ -1,10 +1,6 @@
 #include "generators.h"
 
-<<<<<<< Updated upstream
-double generateRandomNumbers_mixed(const std::vector<double>& params)
-=======
 double generateRandomNumber_mixed(const std::vector<double>& params)
->>>>>>> Stashed changes
 {
 	// converting parameters
 	// to integers
@@ -14,18 +10,11 @@ double generateRandomNumber_mixed(const std::vector<double>& params)
 	int x0 = params[3];
 	int iterations = params[4];
 
-<<<<<<< Updated upstream
-	int xi = x0;
-=======
 	long long int xi = x0;
->>>>>>> Stashed changes
 	for (int i = 0; i < iterations; i++)
 		xi = (lambda * xi + mu) % M;
 
 	return xi;
-<<<<<<< Updated upstream
-}
-=======
 }
 
 double generateRandomNumber_uniform_distr(const std::vector<double>& params)
@@ -48,4 +37,3 @@ double generateRandomNumber_uniform_distr(const std::vector<double>& params)
 
 	return x;
 }
->>>>>>> Stashed changes
