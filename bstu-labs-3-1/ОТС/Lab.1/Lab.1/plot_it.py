@@ -36,7 +36,7 @@ if __name__ == '__main__':
     # generated values
     plt.figure(figsize=(7, 11))
     plt.subplot(2, 1, 1)
-    plt.scatter(range(1000), values)
+    plt.scatter(range(len(values)), values)
     plt.xlabel(parameter_name)
     plt.ylabel('Value')
     plt.title(generator_name)
