@@ -10,11 +10,14 @@ def parse_args():
         '-p', '--path',
         help='file with values to plot'
     )
+<<<<<<< Updated upstream
     parser.add_argument(
         '-s', '--silent',
         help='use it to suppress plot showing',
         action='store_true'
     )
+=======
+>>>>>>> Stashed changes
     args = parser.parse_args()
     return args
 
@@ -28,7 +31,11 @@ def parse_generated_values(file_path):
         generator_name = f.readline().rstrip()
         parameter_name = f.readline().rstrip()
         values_in_line = f.readline().rstrip()
+<<<<<<< Updated upstream
         values = [int(value)
+=======
+        values = [float(value)
+>>>>>>> Stashed changes
                   for value in values_in_line.split(',') if value != '']
         values = np.array(values)
         return generator_name, parameter_name, values
@@ -37,7 +44,11 @@ def parse_generated_values(file_path):
 if __name__ == '__main__':
     args = parse_args()
     generator_name, parameter_name, values = parse_generated_values(args.path)
+<<<<<<< Updated upstream
 
+=======
+    # TODO
+>>>>>>> Stashed changes
     # generated values
     plt.figure(figsize=(7, 11))
     plt.subplot(2, 1, 1)
@@ -45,7 +56,10 @@ if __name__ == '__main__':
     plt.xlabel(parameter_name)
     plt.ylabel('Value')
     plt.title(generator_name)
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
     # values distribution
     plt.subplot(2, 1, 2)
     plt.hist(values, density=True, rwidth=.8)
@@ -55,7 +69,11 @@ if __name__ == '__main__':
         args.path),
         generator_name + '_' + parameter_name + '.png')
     plt.savefig(path_to_save)
+<<<<<<< Updated upstream
 
     # show if not suppressed
     if not args.silent:
         plt.show()
+=======
+    plt.show()
+>>>>>>> Stashed changes

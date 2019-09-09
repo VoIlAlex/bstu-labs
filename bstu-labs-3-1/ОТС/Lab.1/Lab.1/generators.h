@@ -16,4 +16,18 @@
 	@params[3] - X<0>
 	@params[4] - number of iterations
 */
+<<<<<<< Updated upstream
 double generateRandomNumbers_mixed(const std::vector<double>& params);
+=======
+double generateRandomNumber_mixed(const std::vector<double>& params);
+
+/*
+	Uniform distribution.
+
+	Parameters:
+	@params[0] - lower border
+	@params[1] - upper border
+	@params[2] - iteration
+*/
+double generateRandomNumber_uniform_distr(const std::vector<double>& params);
+>>>>>>> Stashed changes

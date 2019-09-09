@@ -53,7 +53,11 @@ public:
 	/*
 		Plots results using python.
 	*/
+<<<<<<< Updated upstream
 	void plot(bool show = true);
+=======
+	void plot();
+>>>>>>> Stashed changes
 	/*
 		Calculation of mathematical parameters
 		like mean, std, etc. And makes vector
@@ -62,7 +66,11 @@ public:
 		Parameters:
 		@size - size of vector to generate
 	*/
+<<<<<<< Updated upstream
 	void execute(int size);
+=======
+	void execute(int size, bool normalize = false);
+>>>>>>> Stashed changes
 	void setGeneratorName(const std::string& name);
 	void setAnalizedParameterName(const std::string& name);
 	void print(const std::string& fileName) const;
