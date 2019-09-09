@@ -146,3 +146,22 @@ void analyseGammaDistr()
 	gamma_distr.plot();
 	std::cin.get();
 }
+
+void analyseSimpsonDistr()
+{
+	Analysis simpson_distr(
+		generateRandomNumber_simpson_distr,
+		[](int i) -> std::vector<double> {
+			return {
+				5, // a
+				10, // b
+				double(i) // iteration
+			};
+		}
+	);
+	simpson_distr.setGeneratorName("Simpson distribution");
+	simpson_distr.setAnalizedParameterName("Iterations");
+	simpson_distr.execute(1000);
+	simpson_distr.plot();
+	std::cin.get();
+}

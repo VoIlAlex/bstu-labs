@@ -38,6 +38,7 @@ int main()
 	//analyseNormalDistr();
 	//analyseExponentialDistr();
 	//analyseGammaDistr();
+	//analyseSimpsonDistr();
 	return 0;
 }
 

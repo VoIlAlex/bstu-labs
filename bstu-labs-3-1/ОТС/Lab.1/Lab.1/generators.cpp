@@ -125,3 +125,40 @@ double generateRandomNumber_gamma_distr(const std::vector<double>& params)
 		}
 		return nums;
 	};
+
+	// n random numbers within (0, 1)
+	auto random_nums = gen(iterations);
+
+	double random_sum = 0.0;
+	for (int i = 0; i < gamma; i++)
+		random_sum = log(random_nums[i]);
+
+	return -(1 / lambda) * random_sum;
+}
+
+double generateRandomNumber_simpson_distr(const std::vector<double>& params)
+{
+	double a = params[0];
+	double b = params[1];
+	int iteration = params[2];
+
+	// 2 random numbers within (0, 1)
+	double R1 = generateRandomNumber_uniform_distr(
+		{
+			a / 2,
+			b / 2,
+			double(iteration)
+		}
+	);
+
+	double R2 = generateRandomNumber_uniform_distr(
+		{
+			a / 2,
+			b / 2,
+			double(iteration + 13)
+		}
+	);
+
+
+	return R1 + R2;
+}

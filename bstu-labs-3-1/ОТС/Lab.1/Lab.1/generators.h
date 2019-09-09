@@ -59,3 +59,15 @@ double generateRandomNumber_exp_distr(const std::vector<double>& params);
 	@params[2] - iteration
 */
 double generateRandomNumber_gamma_distr(const std::vector<double>& params);
+
+/*
+
+	Simpson distribution
+
+	Parameters:
+	@params[0] - a
+	@params[1] - b
+	@params[2] - iteration
+*/
+double generateRandomNumber_simpson_distr(const std::vector<double>& params);
+

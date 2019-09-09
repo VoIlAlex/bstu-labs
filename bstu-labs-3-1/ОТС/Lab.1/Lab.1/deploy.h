@@ -16,3 +16,5 @@ void analyseNormalDistr();
 void analyseExponentialDistr();
 
 void analyseGammaDistr();
+
+void analyseSimpsonDistr();
