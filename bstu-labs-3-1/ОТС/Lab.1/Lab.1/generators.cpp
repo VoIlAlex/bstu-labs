@@ -98,3 +98,30 @@ double generateRandomNumber_exp_distr(const std::vector<double>& params)
 	double final_random_number = -(1 / lambda) * log(1 - R);
 	return final_random_number;
 }
+
+double generateRandomNumber_gamma_distr(const std::vector<double>& params)
+{
+	double lambda = params[0];
+	int gamma = params[1];
+	int iterations = params[2];
+
+	// generation of <gamma> random
+	// numbers within (0, 1)
+	auto gen = [=](int iterations) -> std::vector<double> {
+		std::vector<double> nums;
+		for (int i = iterations * gamma; i < gamma + iterations * gamma; i++)
+		{
+			double random_num = generateRandomNumber_mixed({
+				12312331, // lambda
+				111, // mu
+				std::numeric_limits<int>::max(), // M
+				13, // x<0>
+				double(i) // iterations
+				});
+			random_num /= std::numeric_limits<int>::max();
+			nums.push_back(
+				random_num
+			);
+		}
+		return nums;
+	};

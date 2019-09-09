@@ -127,3 +127,22 @@ void analyseExponentialDistr()
 	exp_distr.plot();
 	std::cin.get();
 }
+
+void analyseGammaDistr()
+{
+	Analysis gamma_distr(
+		generateRandomNumber_gamma_distr,
+		[](int i) -> std::vector<double> {
+			return {
+				10, // lambda
+				13, // gamma
+				double(i) // iteration
+			};
+		}
+	);
+	gamma_distr.setGeneratorName("Gamma distribution");
+	gamma_distr.setAnalizedParameterName("Iterations");
+	gamma_distr.execute(1000);
+	gamma_distr.plot();
+	std::cin.get();
+}

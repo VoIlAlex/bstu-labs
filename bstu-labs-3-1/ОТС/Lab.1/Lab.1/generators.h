@@ -48,3 +48,14 @@ double generateRandomNumber_normal_distr(const std::vector<double>& params);
 	@params[1] - iteration
 */
 double generateRandomNumber_exp_distr(const std::vector<double>& params);
+
+
+/*
+	Gamma distribution.
+
+	Parameters:
+	@params[0] - lambda
+	@params[1] - gamma
+	@params[2] - iteration
+*/
+double generateRandomNumber_gamma_distr(const std::vector<double>& params);

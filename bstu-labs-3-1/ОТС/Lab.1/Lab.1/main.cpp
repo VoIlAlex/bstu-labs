@@ -37,6 +37,7 @@ int main()
 	//analyseUniformDistr();
 	//analyseNormalDistr();
 	//analyseExponentialDistr();
+	//analyseGammaDistr();
 	return 0;
 }
 

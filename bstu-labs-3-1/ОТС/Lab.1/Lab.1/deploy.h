@@ -14,3 +14,5 @@ void analyseUniformDistr();
 void analyseNormalDistr();
 
 void analyseExponentialDistr();
+
+void analyseGammaDistr();
