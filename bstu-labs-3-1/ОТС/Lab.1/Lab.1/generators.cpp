@@ -162,3 +162,34 @@ double generateRandomNumber_simpson_distr(const std::vector<double>& params)
 
 	return R1 + R2;
 }
+
+double generateRandomNumber_left_side(const std::vector<double>& params)
+{
+	static int steps_ahead = 0;
+	double a = params[0];
+	double b = params[1];
+	int iteration = params[2];
+
+	double R1 = 0, R2 = 0;
+	while (!(R2 < R1) && ++steps_ahead)
+	{
+		// 2 random numbers within (0, 1)
+		R1 = generateRandomNumber_uniform_distr(
+			{
+				a / 2,
+				b / 2,
+				double(iteration + steps_ahead)
+			}
+		);
+
+		R2 = generateRandomNumber_uniform_distr(
+			{
+				a / 2,
+				b / 2,
+				double(iteration + 13 + steps_ahead)
+			}
+		);
+	}
+
+	return a + (b - a) * R1;
+}

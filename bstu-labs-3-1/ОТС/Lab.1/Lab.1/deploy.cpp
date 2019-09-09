@@ -165,3 +165,23 @@ void analyseSimpsonDistr()
 	simpson_distr.plot();
 	std::cin.get();
 }
+
+void analyseLeftSideDistr()
+{
+	Analysis left_side_distr(
+		generateRandomNumber_left_side,
+		[](int i) -> std::vector<double> {
+			return {
+				5, // a
+				10, // b
+				double(i) // iteration
+			};
+		}
+	);
+	left_side_distr.setGeneratorName("Left side distribution");
+	left_side_distr.setAnalizedParameterName("Iterations");
+	left_side_distr.execute(1000);
+	left_side_distr.plot();
+	std::cin.get();
+
+}

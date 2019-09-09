@@ -18,3 +18,5 @@ void analyseExponentialDistr();
 void analyseGammaDistr();
 
 void analyseSimpsonDistr();
+
+void analyseLeftSideDistr();

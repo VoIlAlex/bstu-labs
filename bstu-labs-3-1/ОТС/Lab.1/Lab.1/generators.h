@@ -71,3 +71,13 @@ double generateRandomNumber_gamma_distr(const std::vector<double>& params);
 */
 double generateRandomNumber_simpson_distr(const std::vector<double>& params);
 
+
+/*
+	Left side random distribution
+
+	Parameters:
+	@params[0] - a
+	@params[1] - b
+	@params[2] - iteration
+*/
+double generateRandomNumber_left_side(const std::vector<double>& params);
