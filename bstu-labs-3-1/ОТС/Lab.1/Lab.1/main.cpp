@@ -33,12 +33,12 @@
 
 int main()
 {
-	//analyseMixed();
-	//analyseUniformDistr();
-	//analyseNormalDistr();
-	//analyseExponentialDistr();
-	//analyseGammaDistr();
-	//analyseSimpsonDistr();
+	analyseMixed();
+	analyseUniformDistr();
+	analyseNormalDistr();
+	analyseExponentialDistr();
+	analyseGammaDistr();
+	analyseSimpsonDistr();
 	analyseLeftSideDistr();
 	return 0;
 }

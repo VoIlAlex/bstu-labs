@@ -74,6 +74,11 @@ void Analysis::plot()
 			info_buffer << ",";
 		info_buffer << m_generatedValues[i];
 	}
+
+	// print mean and dispersion
+	info_buffer << std::endl << "Mean: " << m_mean << std::endl;
+	info_buffer << "Dispersion: " << m_dispersion << std::endl;
+
 	info_buffer.close();
 
 	// save additional info
