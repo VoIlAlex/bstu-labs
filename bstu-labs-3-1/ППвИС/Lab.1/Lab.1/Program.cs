@@ -1,4 +1,14 @@
-﻿using System;
+﻿/*
+ 
+    Each class implemented here
+    has method `Test` which is used 
+    to, well, test classes abilities.
+
+    Feel free to improve it.
+ 
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -228,6 +238,7 @@ namespace lab_1
 
     }
 
+
     class Container<T>
     {
         // attributes
@@ -299,6 +310,8 @@ namespace lab_1
             Console.ReadKey();
         }
     }
+
+
 
     class Program
     {
