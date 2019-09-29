@@ -133,7 +133,7 @@ void Analysis::execute(int size, bool normalize)
 	// calculation of the dispersion
 	for (auto it = m_generatedValues.begin(); it != m_generatedValues.end(); it++)
 		m_dispersion += pow(*it - m_mean, 2);
-	m_dispersion /= m_generatedValues.size();
+	m_dispersion /= m_generatedValues.size() - 1;
 
 	// set this analysis as
 	// executed
