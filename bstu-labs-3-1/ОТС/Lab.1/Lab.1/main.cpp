@@ -33,13 +33,14 @@
 
 int main()
 {
-	analyseMixed();
+	/*analyseMixed();
 	analyseUniformDistr();
 	analyseNormalDistr();
 	analyseExponentialDistr();
 	analyseGammaDistr();
 	analyseSimpsonDistr();
-	analyseLeftSideDistr();
+	analyseLeftSideDistr();*/
+	lab_solution();
 	return 0;
 }
 
