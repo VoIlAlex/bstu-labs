@@ -185,3 +185,45 @@ void analyseLeftSideDistr()
 	std::cin.get();
 
 }
+
+void lab_solution()
+{
+	double mean = 100;
+	double d = 10;
+	double n = 6;
+	Analysis normal_distr(
+		generateRandomNumber_normal_distr,
+		[=](int i) -> std::vector<double> {
+			return {
+				mean, // mean
+				d, // D
+				n, // n
+				double(i) // iteration
+			};
+		}
+	);
+
+	std::string dirname = std::filesystem::current_path().string() + "\\results" + "\\lab_results" + "\\";
+
+	normal_distr.setGeneratorName("Normal distribution");
+	normal_distr.setAnalizedParameterName("Iterations");
+
+	double beta = 0.8;
+
+	for (int value : { 100, 500, 1000, 10000, 30000 })
+	{
+		normal_distr.execute(value);
+		std::string filename = dirname + "normal_" + std::to_string(value) + ".txt";
+		normal_distr.print(filename);
+
+		std::ofstream fout(filename, std::ios::app | std::ios::out);
+
+		auto [mean_from, mean_to] = normal_distr.trustInterval("mean", mean, d * d, beta);
+		auto [dispersion_from, dispersion_to] = normal_distr.trustInterval("dispersion", mean, d * d, beta);
+
+		fout << "\nMean: " << mean_from << " --- " << mean_to << std::endl;
+		fout << "Dispersion: " << dispersion_from << " --- " << dispersion_to << std::endl;
+
+		fout.close();
+	}
+}
