@@ -109,6 +109,7 @@ void Analysis::execute(int size, bool normalize)
 	std::vector<double> params;
 
 	double generatedValue;
+
 	for (int i = 0; i < size; i++)
 	{
 		// generate parameters of
@@ -152,7 +153,7 @@ void Analysis::setAnalizedParameterName(const std::string& name)
 
 void Analysis::print(const std::string& fileName) const
 {
-	std::ofstream results(fileName);
+	std::ofstream results(fileName, std::ios::out);
 	if (!results)
 	{
 		std::cerr
@@ -161,10 +162,7 @@ void Analysis::print(const std::string& fileName) const
 			<< std::endl;
 		return;
 	}
-	results << "Generator: " << m_generatorName << std::endl;
-	results << "Analyzed parameter: " << m_analizedParameterName << std::endl;
-	results << "Mean: " << m_mean << std::endl;
-	results << "Dispersion: " << m_dispersion << std::endl;
+	results << print();
 }
 
 std::string Analysis::print() const
@@ -174,7 +172,53 @@ std::string Analysis::print() const
 	results << "Analyzed parameter: " << m_analizedParameterName << std::endl;
 	results << "Mean: " << m_mean << std::endl;
 	results << "Dispersion: " << m_dispersion << std::endl;
+	results << "Values: ";
+	for (auto it = m_generatedValues.begin(); it != m_generatedValues.end(); it++)
+	{
+		if (it != m_generatedValues.begin())
+			results << " ";
+		results << *it;
+	}
 	return results.str();
+}
+
+std::pair<double, double> Analysis::trustInterval(const std::string& type, double mean, double dispersion, double beta)
+{
+	if (!m_is_executed)
+		throw std::runtime_error("Analysis isn't executed");
+
+	double epsilon;
+	double t = m_t[beta];
+	double sigma;
+	double value;
+	if (type == "mean")
+	{
+		value = m_mean;
+		sigma = sqrt(value / m_generatedValues.size());
+	}
+	else if (type == "dispersion")
+	{
+		value = m_dispersion;
+		size_t N = m_generatedValues.size();
+		sigma = sqrt(get_mu(4) / N - (N - 3) * pow(m_dispersion, 2) / (N * (N - 1)));
+	}
+	else throw std::runtime_error("type must have values 'mean' or 'dispersion'");
+
+	epsilon = sigma * t;
+
+	return {
+		value - epsilon,
+		value + epsilon
+	};
+}
+
+double Analysis::get_mu(int degree)
+{
+	double mu = 0;
+	for (int i = 0; i < m_generatedValues.size(); i++)
+		mu += pow(m_generatedValues[i] - m_mean, degree);
+	mu /= m_generatedValues.size();
+	return mu;
 }
 
 std::ostream& operator<<(std::ostream& stream, const Analysis& analysis)
