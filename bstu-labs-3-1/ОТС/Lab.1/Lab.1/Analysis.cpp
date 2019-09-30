@@ -1,4 +1,5 @@
 #include "Analysis.h"
+#include <algorithm>
 
 
 /*
@@ -210,6 +211,44 @@ std::pair<double, double> Analysis::trustInterval(const std::string& type, doubl
 		value - epsilon,
 		value + epsilon
 	};
+}
+
+double range_probability_by_pdf(PDF pdf, double min, double max, double step = 0.001)
+{
+	double range_probability = 0;
+	for (double i = min; i < max; i += step)
+		range_probability += pdf(i) * step;
+	return range_probability;
+}
+
+double Analysis::hi_square(PDF pdf, int degrees_of_freedom)
+{
+	double min_element = *std::min_element(m_generatedValues.begin(), m_generatedValues.end());
+	double max_element = *std::max_element(m_generatedValues.begin(), m_generatedValues.end());
+	double step = max_element - min_element;
+
+	double hi_square = 0;
+	double lower_border, upper_border;
+	int values_in_range;
+	double	range_probability,
+		actual_range_probability;
+	for (int i = min_element + step; i <= max_element; i += step)
+	{
+		lower_border = i - step;
+		upper_border = i;
+		values_in_range = 0;
+
+		for (auto value : m_generatedValues)
+			if (value > lower_border && value <= upper_border)
+				values_in_range++;
+
+
+		range_probability = (double)values_in_range / m_generatedValues.size();
+		actual_range_probability = range_probability_by_pdf(pdf, lower_border, upper_border);
+
+		hi_square += pow(range_probability - actual_range_probability, 2) / actual_range_probability;
+	}
+	return hi_square * degrees_of_freedom;
 }
 
 double Analysis::get_mu(int degree)

@@ -220,9 +220,13 @@ void lab_solution()
 
 		auto [mean_from, mean_to] = normal_distr.trustInterval("mean", mean, d * d, beta);
 		auto [dispersion_from, dispersion_to] = normal_distr.trustInterval("dispersion", mean, d * d, beta);
+		auto hi_square = normal_distr.hi_square([=](double x) -> double {
+			return (1.0 / (d * sqrt(2 * 3.1415))) * exp(-pow(x - mean, 2) / (2 * d));
+			});
 
 		fout << "\nMean: " << mean_from << " --- " << mean_to << std::endl;
 		fout << "Dispersion: " << dispersion_from << " --- " << dispersion_to << std::endl;
+		fout << "Hi square: " << hi_square << std::endl;
 
 		fout.close();
 	}

@@ -129,7 +129,6 @@
     <ClCompile Include="deploy.cpp" />
     <ClCompile Include="generators.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Analysis.h" />
