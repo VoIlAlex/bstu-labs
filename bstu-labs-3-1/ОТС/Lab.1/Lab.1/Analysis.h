@@ -13,6 +13,8 @@
 /** Type definitions **/
 typedef std::function<double(const std::vector<double>&)> RandomGenerator;
 typedef std::function<std::vector<double>(double)> ParamsGenerator;
+typedef std::function<double(double)> PDF;
+
 
 /*
 	This class makes analyzes of
@@ -79,6 +81,7 @@ public:
 	void print(const std::string& fileName) const;
 	std::string print() const;
 	std::pair<double, double> trustInterval(const std::string& type, double mean, double dispersion, double beta);
+	double hi_square(::PDF pdf, int degrees_of_freedom = 6);
 	friend ::std::ostream& operator<<(std::ostream& stream, const Analysis& analysis);
 private:
 	double get_mu(int degree);
