@@ -15,31 +15,34 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Analysis.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="generators.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="deploy.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="plot_it.py" />
+    <ClCompile Include="generators.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Analysis.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="generators.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="deploy.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="generators.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="plot_it.py" />
   </ItemGroup>
 </Project>
