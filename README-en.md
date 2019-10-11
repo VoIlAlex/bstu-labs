@@ -2,9 +2,15 @@
 
 **!! This repository is under development. If you have any ideas how to make it better or you have any questions, please raise an issue.**
 
+
 This repo contains all labs of AI
 disciplines at Brest State Technical 
 University.
+
+### This document in different languages
+- [Русский](README.md)
+- English
+
 
 ## Rules 
 Rule #1. Don't tell teachers  about Dark side of BSTU
