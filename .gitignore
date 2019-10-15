@@ -59,3 +59,11 @@ desktop.ini
 # Others
 etc/
 CONTRIBUTING.md
+
+
+#########
+## g++ ##
+#########
+
+executable
+*.o
