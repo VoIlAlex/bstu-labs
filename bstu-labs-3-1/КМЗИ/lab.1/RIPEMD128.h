@@ -7,7 +7,7 @@
 class RIPEMD128
 {
 	// Initial values
-	std::vector<int> h;
+	std::vector<unsigned int> h;
 	
 	// Initial lenght
 	size_t m_initial_length;
@@ -33,7 +33,7 @@ private:
 	// initialize the output vector
 	void init_h();
 public:
-
+	RIPEMD128();
 	// step 5. Result
 	std::string operator()(const std::string& input);
 
