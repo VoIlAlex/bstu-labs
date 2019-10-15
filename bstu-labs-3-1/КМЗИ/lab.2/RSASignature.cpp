@@ -52,7 +52,7 @@ std::pair<int, int> RSASignature::get_public_key() const
 
 mp::cpp_int RSASignature::sign(const mp::cpp_int& message) const
 {
-    return pow_mod(message, m_d, m_n);
+    return mp::pow(message, m_d) % m_n;
 }
 
 
