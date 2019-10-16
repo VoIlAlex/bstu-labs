@@ -21,8 +21,8 @@ std::string RIPEMD128::add_additional_bits(const std::string& input)
 std::string RIPEMD128::add_initial_length(const std::string& input)
 {
 	std::string result(input);
-	for(int i = 0; i < 4; i++)
-		result += ((3 - i) * 8 >> m_initial_length) & 0xFF;
+	for(int i = 0; i < 8; i++)
+		result += ((7 - i) * 8 >> m_initial_length) & 0xFF;
 	return result;
 }
 
