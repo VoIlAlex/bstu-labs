@@ -1,25 +1,23 @@
-#include "SHA512.h"
 
+#include <sstream>
+#include "SHA512.hxx"
 
-std::string SHA512::add_additional_bits(const std::string& input)
+std::string SHA512::add_additional_bits(const std::string &input)
 {
-    std::string result;
-    std::string result(input);
+	std::string result = input;
 	result += char(1 << 7);
-	for(int i = result.size(); i % 64 != 56; i++)
+	for (int i = result.size(); i % 64 != 56; i++)
 		result += char(0);
 	return result;
 }
 
-
-std::string SHA512::add_initial_length(const std::string& input)
+std::string SHA512::add_initial_length(const std::string &input)
 {
-	std::string result(input);
-	for(int i = 0; i < 8; i++)
+	std::string result = input;
+	for (int i = 0; i < 8; i++)
 		result += ((7 - i) * 8 >> m_initial_length) & 0xFF;
 	return result;
 }
-
 
 SHA512::SHA512()
 {
@@ -103,8 +101,7 @@ SHA512::SHA512()
 		0xf57d4f7fee6ed178,
 		0x1b710b35131c471b,
 		0x431d67c49c100d4c,
-		0x6c44198c4a475817
-	};
+		0x6c44198c4a475817};
 	H = {
 		0x6a09e667f3bcc908,
 		0xbb67ae8584caa73b,
@@ -113,14 +110,130 @@ SHA512::SHA512()
 		0x510e527fade682d1,
 		0x9b05688c2b3e6c1f,
 		0x1f83d9abfb41bd6b,
-		0x5be0cd19137e2179
-	};
+		0x5be0cd19137e2179};
 }
 
-void main_cycle(const std::string& input)
+uint64_t ROTR(uint64_t x, int n)
 {
-	for(int i = 0; i < input.size() / 64; i++)
+	return (x >> n) | (x << (64 - n));
+}
+
+uint64_t SHR(uint64_t x, int n)
+{
+	return x >> n;
+}
+
+uint64_t sigma_0(uint64_t x)
+{
+	return ROTR(x, 1) ^ ROTR(x, 8) ^ ROTR(x, 7);
+}
+
+uint64_t sigma_1(uint64_t x)
+{
+	return ROTR(x, 19) ^ ROTR(x, 61) ^ SHR(x, 6);
+}
+
+uint64_t weird_sigma_0(uint64_t x)
+{
+	return ROTR(x, 28) ^ ROTR(x, 34) ^ ROTR(x, 39);
+}
+
+uint64_t weird_sigma_1(uint64_t x)
+{
+	return ROTR(x, 14) ^ ROTR(x, 18) ^ ROTR(x, 41);
+}
+
+uint64_t Ch(uint64_t x, uint64_t y, uint64_t z)
+{
+	return (x & y) | (~x & z);
+}
+
+uint64_t Maj(uint64_t x, uint64_t y, uint64_t z)
+{
+	return (x & y) | (x & z) | (y & z);
+}
+
+void SHA512::main_cycle(const std::string &input)
+{
+	for (int i = 0; i < input.size() / 64; i++)
 	{
-		
+		// 1. Подготовка списка преобразованных слов сообщения
+		std::string word{input.begin() + i * 64, input.begin() + (i + 1) * 64};
+		std::vector<int32_t> W(80);
+
+		// first 16 values
+		for (int j = 0; j < 16; j++)
+		{
+			int32_t value = 0;
+			for (int t = 0; t < 4; t++)
+			{
+				value <<= 8;
+				value = value | word[j * 4 + t];
+			}
+			W.push_back(value);
+		}
+
+		// other values
+		for (int j = 16; j < 80; j++)
+		{
+			W.push_back(
+				sigma_1(W[j - 2]) + W[j - 7] + sigma_0(W[j - 15]) + W[j - 16]);
+		}
+
+		// 2. Инициализация рабочих переменных
+		int a = H[0],
+			b = H[1],
+			c = H[2],
+			d = H[3],
+			e = H[4],
+			f = H[5],
+			g = H[6],
+			h = H[7];
+
+		// 3. Внутренний цикл
+		for (int t = 0; t < 80; t++)
+		{
+			uint64_t T1 = h + weird_sigma_1(e) + Ch(e, f, g) + K[t] + W[t];
+			uint64_t T2 = weird_sigma_0(a) + Maj(a, b, c);
+			h = g;
+			g = f;
+			f = e;
+			e = d + T1;
+			d = c;
+			c = b;
+			b = a;
+			a = T1 + T2;
+		}
+
+		// 4. Вычисление промежуточного значения хэш-функции
+		H[0] = a + H[0];
+		H[1] = b + H[1];
+		H[2] = c + H[2];
+		H[3] = d + H[3];
+		H[4] = e + H[4];
+		H[5] = f + H[5];
+		H[6] = g + H[6];
+		H[7] = h + H[7];
 	}
+}
+
+std::string SHA512::generate_result() const
+{
+	std::stringstream result;
+	for (int i = 0; i < 8; i++)
+	{
+		if (i != 0)
+			result << ' ';
+		result << std::hex << H[i];
+	}
+	return result.str();
+}
+
+std::string SHA512::operator()(const std::string &input)
+{
+	m_initial_length = input.size() * 8;
+	std::string result = add_additional_bits(input);
+	result = add_initial_length(result);
+	main_cycle(result);
+	return generate_result();
 }
