@@ -15,3 +15,5 @@ void analyseSimpsonDistr();
 void analyseLeftSideDistr();
 
 void lab_solution();
+
+void lab_solution_2();

@@ -225,7 +225,7 @@ double Analysis::hi_square(PDF pdf, int degrees_of_freedom)
 {
 	double min_element = *std::min_element(m_generatedValues.begin(), m_generatedValues.end());
 	double max_element = *std::max_element(m_generatedValues.begin(), m_generatedValues.end());
-	double step = max_element - min_element;
+	double step = (max_element - min_element) / double(degrees_of_freedom);
 
 	double hi_square = 0;
 	double lower_border, upper_border;
@@ -239,7 +239,7 @@ double Analysis::hi_square(PDF pdf, int degrees_of_freedom)
 		values_in_range = 0;
 
 		for (auto value : m_generatedValues)
-			if (value > lower_border && value <= upper_border)
+			if (value > lower_border&& value <= upper_border)
 				values_in_range++;
 
 
@@ -249,6 +249,11 @@ double Analysis::hi_square(PDF pdf, int degrees_of_freedom)
 		hi_square += pow(range_probability - actual_range_probability, 2) / actual_range_probability;
 	}
 	return hi_square * degrees_of_freedom;
+}
+
+std::vector<double>& Analysis::generatedValues()
+{
+	return m_generatedValues;
 }
 
 double Analysis::get_mu(int degree)

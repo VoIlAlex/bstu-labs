@@ -82,6 +82,7 @@ public:
 	std::string print() const;
 	std::pair<double, double> trustInterval(const std::string& type, double mean, double dispersion, double beta);
 	double hi_square(::PDF pdf, int degrees_of_freedom = 6);
+	std::vector<double>& generatedValues();
 	friend ::std::ostream& operator<<(std::ostream& stream, const Analysis& analysis);
 private:
 	double get_mu(int degree);

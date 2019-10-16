@@ -188,6 +188,11 @@ void analyseLeftSideDistr()
 
 void lab_solution()
 {
+	//
+	// !! Here is a bug 
+	// !! in hi squared 
+	// !! calculation
+	//
 	double mean = 100;
 	double d = 10;
 	double n = 6;
@@ -215,6 +220,7 @@ void lab_solution()
 		normal_distr.execute(value);
 		std::string filename = dirname + "normal_" + std::to_string(value) + ".txt";
 		normal_distr.print(filename);
+		normal_distr.plot();
 
 		std::ofstream fout(filename, std::ios::app | std::ios::out);
 
@@ -222,6 +228,59 @@ void lab_solution()
 		auto [dispersion_from, dispersion_to] = normal_distr.trustInterval("dispersion", mean, d * d, beta);
 		auto hi_square = normal_distr.hi_square([=](double x) -> double {
 			return (1.0 / (d * sqrt(2 * 3.1415))) * exp(-pow(x - mean, 2) / (2 * d));
+			});
+
+		fout << "\nMean: " << mean_from << " --- " << mean_to << std::endl;
+		fout << "Dispersion: " << dispersion_from << " --- " << dispersion_to << std::endl;
+		fout << "Hi square: " << hi_square << std::endl;
+
+		fout.close();
+	}
+}
+
+void lab_solution_2()
+{
+	Analysis mixed_distr(
+		generateRandomNumber_mixed,
+		[](int i) -> std::vector<double> {
+			return {
+				733331, // lambda
+				123127, // mu
+				1000, // M
+				123, // x<0>
+				double(i) // iterations
+			};
+		});
+	mixed_distr.setGeneratorName("Mixed");
+	mixed_distr.setAnalizedParameterName("Iterations");
+
+	std::string dirname = std::filesystem::current_path().string() + "\\results" + "\\lab_results" + "\\";
+
+	double beta = 0.8;
+	double mean = 500;
+	double dispersion = pow(1000, 2) / 12.0;
+	double d = pow(dispersion, 0.5);
+
+	for (int value : { 100, 500, 1000, 10000, 30000 })
+	{
+		mixed_distr.execute(value);
+		std::string filename = dirname + "mixed_" + std::to_string(value) + ".txt";
+		mixed_distr.print(filename);
+		mixed_distr.plot();
+		std::ofstream fout(filename, std::ios::app | std::ios::out);
+
+		auto [mean_from, mean_to] = mixed_distr.trustInterval("mean", mean, dispersion, beta);
+		auto [dispersion_from, dispersion_to] = mixed_distr.trustInterval("dispersion", mean, dispersion, beta);
+
+		double max_element = *std::max_element(mixed_distr.generatedValues().begin(), mixed_distr.generatedValues().end());
+		double min_element = *std::min_element(mixed_distr.generatedValues().begin(), mixed_distr.generatedValues().end());
+
+		double pdf_const = 1.0 / (max_element - min_element);
+
+
+
+		auto hi_square = mixed_distr.hi_square([&](double x) -> double {
+			return pdf_const;
 			});
 
 		fout << "\nMean: " << mean_from << " --- " << mean_to << std::endl;
